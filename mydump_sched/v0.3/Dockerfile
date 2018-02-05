@@ -38,3 +38,5 @@ WORKDIR ${APP_HOME}
 
 # run init sh
 CMD /cloud/init.sh
+
+ 

@@ -5,7 +5,7 @@
 
     "mysql_backup_local_path":"/cloud/workdir/mysql_backup/",
     "task_execution_time":"03:00",
-
+  
     "off_site_backup":{
         "enabled":false,
         "host_ip":"10.11.1.255",
