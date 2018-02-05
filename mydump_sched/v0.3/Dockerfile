@@ -13,6 +13,9 @@ RUN yum -y install mysql
 RUN yum -y install sshpass
 RUN yum -y install openssh-clients
 
+# config ssh 
+RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
 # install python module
 RUN yum -y install python2-pip
 RUN pip install schedule

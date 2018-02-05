@@ -1,10 +1,54 @@
 {
+    "comments":"1, password is base64 towice encryption; 2, all path must have the last slash",
+
+    "enabled":false,
+
+    "mysql_backup_local_path":"/cloud/workdir/mysql_backup/",
+    "task_execution_time":"03:00",
+
+    "off_site_backup":{
+        "enabled":false,
+        "host_ip":"10.11.1.255",
+        "username":"root",
+        "password":"TVhGaGVrQlhVMWc9",
+        "backup_path":"/cloud/offsite/mysql_backup/"
+    },
+
+    "profile":{
+        "selected":"dev",
+        "option":{
+            "dev":{
+                "database_ip":"10.11.1.255",
+                "database_user":"devread",
+                "database_pass":"TVRJek5EVTI=",
+                "mysql_backup_local_path":"/cloud/dev/workdir/mysql_backup/",
+                "task_execution_time":"04:00",
+                "off_site_backup":{
+                    "host_ip":"10.11.1.255",
+                    "username":"root",
+                    "password":"TVhGaGVrQlhVMWc9",
+                    "backup_path":"/cloud/customize/mysql_backup/"
+                }
+            },
+            "test":{
+                "database_ip":"10.11.2.50",
+                "database_user":"appread",
+                "database_pass":"TVRJek5EVTI="
+            },
+            "prod":{
+                "database_ip":"10.21.24.221",
+                "database_user":"operead",
+                "database_pass":"TVRJek5EVTI="
+            }
+        }
+    },
+    
     "dbs": [
         {
             "db_name": "paas_bpm",
             "database_ip": "10.11.1.255",
             "database_user": "appuser",
-            "database_pass": "123456"
+            "database_pass": "TVRJek5EVTI="
         },
         {
             "db_name": "paas_message_center"
