@@ -11,7 +11,7 @@ import schedule
 JSON_PATH = "config.json"
 MYSQL_DUMP = "mysqldump"
 #MYSQL_DUMP = "D:\\DataBase\\mysql\mysqld\\bin\\mysqldump.exe"
-IS_DEBUG = True
+IS_DEBUG = False
 
 def decode(ciphertext):
     """
@@ -48,33 +48,6 @@ def check_key_if_exist(obj, key_name):
         return True
     except:
         return False
-
-def mkdir_remote(config, dir_path, passwd, username, host_ip):
-    '''
-     mk a remote dir
-    '''
-    global IS_DEBUG
-    cmd_str = 'sshpass -p %s ssh %s@%s mkdir -p %s' % (passwd, username, host_ip, dir_path)
-    if IS_DEBUG:
-        print cmd_str
-    os.system(cmd_str)
-
-def offsite_backup_task(config, year_str, month_str, local_backup_path):
-    """
-    send backup files to offsite server
-    """
-    global IS_DEBUG
-    off_site_year_month_path = config["off_site_backup"]["backup_path"] + year_str + "/" + month_str + "/"
-    if IS_DEBUG:
-        print off_site_year_month_path
-    host_ip = config["off_site_backup"]["host_ip"]
-    username = config["off_site_backup"]["username"]
-    passwd = decode(config["off_site_backup"]["password"])
-    mkdir_remote(config, off_site_year_month_path, passwd, username, host_ip)
-    cmd_str = 'sshpass -p %s scp -r %s %s@%s:%s' % (passwd, local_backup_path, username, host_ip, off_site_year_month_path)
-    if IS_DEBUG:
-        print cmd_str
-    os.system(cmd_str)
 
 def do_backup_job(db_name, mysql_backup_path, time_str, database_ip, database_user, database_pass):
     global MYSQL_DUMP, IS_DEBUG
@@ -127,6 +100,34 @@ def backup_task(config):
         do_backup_job(db_name, backup_path, time_str,database_ip, database_user, database_pass)
     return year_str, month_str, backup_path
 
+def mkdir_remote(config, dir_path, passwd, username, host_ip):
+    '''
+     mk a remote dir
+    '''
+    global IS_DEBUG
+    cmd_str = 'sshpass -p %s ssh %s@%s mkdir -p %s' % (passwd, username, host_ip, dir_path)
+    if IS_DEBUG:
+        print cmd_str
+    os.system(cmd_str)
+
+def offsite_backup_task(config, year_str, month_str, local_backup_path):
+    """
+    send backup files to offsite server
+    """
+    global IS_DEBUG
+    off_site_year_month_path = config["off_site_backup"]["backup_path"] + year_str + "/" + month_str + "/"
+    if IS_DEBUG:
+        print off_site_year_month_path
+    host_ip = config["off_site_backup"]["host_ip"]
+    username = config["off_site_backup"]["username"]
+    passwd = decode(config["off_site_backup"]["password"])
+    mkdir_remote(config, off_site_year_month_path, passwd, username, host_ip)
+    cmd_str = 'sshpass -p %s scp -r %s %s@%s:%s' % (passwd, local_backup_path, username, host_ip, off_site_year_month_path)
+    if IS_DEBUG:
+        print cmd_str
+    os.system(cmd_str)
+    print "Transfer to %s@%s:%s backup files is completed!" % (username, host_ip, off_site_year_month_path)
+
 def task(config):
     """
     task
@@ -136,7 +137,9 @@ def task(config):
         if check_key_if_exist(config, "enabled"):
             if config["off_site_backup"]["enabled"]:
                 offsite_backup_task(config, year_str, month_str, local_backup_path)
-    return None
+    print "task completed: %s" % (time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
+    print "---------------------------------------------------------------------------------------------->"
+
 
 def doJobs(config):
     """
