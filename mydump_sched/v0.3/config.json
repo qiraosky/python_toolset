@@ -1,5 +1,5 @@
 {
-    "comments":"1, password is base64 towice encryption; 2, all path must have the last slash",
+    "comments":"1, password is base64 towice encryption; 2, all path must have the last slash; 3,mysql_backup_local_path must under /cloud/workdir/,or you must mapping backup dir by manual",
 
     "enabled":false,
 
@@ -21,7 +21,7 @@
                 "database_ip":"10.11.1.255",
                 "database_user":"devread",
                 "database_pass":"TVRJek5EVTI=",
-                "mysql_backup_local_path":"/cloud/dev/workdir/mysql_backup/",
+                "mysql_backup_local_path":"/cloud/workdir/dev/mysql_backup/",
                 "task_execution_time":"04:00",
                 "off_site_backup":{
                     "host_ip":"10.11.1.255",
