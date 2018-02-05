@@ -1,4 +1,4 @@
-# 日常Python应用工具集
+# Python application Toolset
 
 # mydump_sched
-mysql 备份工具，附Dockerfile 
+mysql backup tool，with Dockerfile 
