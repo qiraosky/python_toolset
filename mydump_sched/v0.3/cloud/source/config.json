@@ -1,0 +1,79 @@
+{
+    "dbs": [
+        {
+            "db_name": "paas_bpm",
+            "database_ip": "10.11.1.255",
+            "database_user": "appuser",
+            "database_pass": "123456"
+        },
+        {
+            "db_name": "paas_message_center"
+        },
+        {
+            "db_name": "paas_permission"
+        },
+        {
+            "db_name": "paas_portal"
+        },
+        {
+            "db_name": "saas_administrative_approval"
+        },
+        {
+            "db_name": "saas_archives"
+        },
+        {
+            "db_name": "saas_attendance"
+        },
+        {
+            "db_name": "saas_company"
+        },
+        {
+            "db_name": "saas_discipline_inspection"
+        },
+        {
+            "db_name": "saas_environmental_protection"
+        },
+        {
+            "db_name": "saas_food_safety"
+        },
+        {
+            "db_name": "saas_gov_investment_project"
+        },
+        {
+            "db_name": "saas_information"
+        },
+        {
+            "db_name": "saas_land_acquisition"
+        },
+        {
+            "db_name": "saas_logistics"
+        },
+        {
+            "db_name": "saas_manage_dashboard"
+        },
+        {
+            "db_name": "saas_meeting"
+        },
+        {
+            "db_name": "saas_merchant"
+        },
+        {
+            "db_name": "saas_official_document"
+        },
+        {
+            "db_name": "saas_party_building"
+        },
+        {
+            "db_name": "saas_performance"
+        },
+        {
+            "db_name": "saas_programme"
+        },
+        {
+            "db_name": "saas_social_investment_project"
+        },
+        {
+            "db_name": "saas_supervision"
+        }
+    ]
+}
